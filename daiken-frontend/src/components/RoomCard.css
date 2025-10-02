@@ -1,0 +1,237 @@
+.room-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.room-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.room-card.heating {
+  border-color: #ff6b6b;
+  background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+}
+
+.room-card.cooling {
+  border-color: #4dabf7;
+  background: linear-gradient(135deg, #fff 0%, #f0f8ff 100%);
+}
+
+.room-card.neutral {
+  border-color: #e9ecef;
+  background: white;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.room-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.room-icon {
+  width: 24px;
+  height: 24px;
+  color: #495057;
+}
+
+.room-info h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #212529;
+}
+
+.room-type {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.room-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  background: none;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background: #f8f9fa;
+}
+
+.action-btn.edit {
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.action-btn.edit:hover {
+  background: #e7f1ff;
+}
+
+.action-btn.delete {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.action-btn.delete:hover {
+  background: #f8d7da;
+}
+
+.action-btn.save {
+  color: #198754;
+  border-color: #198754;
+}
+
+.action-btn.save:hover {
+  background: #d1e7dd;
+}
+
+.action-btn.cancel {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.action-btn.cancel:hover {
+  background: #e9ecef;
+}
+
+.room-details {
+  space-y: 12px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 8px 0;
+}
+
+.detail-item strong {
+  color: #495057;
+  font-weight: 600;
+}
+
+.detail-item span {
+  color: #212529;
+}
+
+.edit-input, .edit-select {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  width: 120px;
+}
+
+.edit-input:focus, .edit-select:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+}
+
+.temperature-section {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.temperature-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.temp-icon {
+  width: 20px;
+  height: 20px;
+  color: #495057;
+}
+
+.temperature {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.status-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.status-icon.heating {
+  color: #ff6b6b;
+}
+
+.status-icon.cooling {
+  color: #4dabf7;
+}
+
+.status-icon.neutral {
+  color: #6c757d;
+}
+
+.status-text {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.heating .status-text {
+  color: #ff6b6b;
+}
+
+.cooling .status-text {
+  color: #4dabf7;
+}
+
+.neutral .status-text {
+  color: #6c757d;
+}
+
+@media (max-width: 768px) {
+  .room-card {
+    margin: 8px;
+    min-width: 280px;
+  }
+  
+  .room-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .room-actions {
+    align-self: flex-end;
+  }
+}

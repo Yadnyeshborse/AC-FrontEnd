@@ -1,70 +1,154 @@
-# Getting Started with Create React App
+# Building Controls Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React.js frontend application for the Building Controls System that allows users to manage and monitor building temperature control systems.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Building Overview**: Display building statistics and current status
+- **Room Management**: View, add, edit, and delete rooms (Apartments and Common Rooms)
+- **Temperature Control**: Set and adjust building target temperature
+- **Real-time Updates**: Automatic refresh of heating/cooling status every 5 seconds
+- **Responsive Design**: Modern UI that works on desktop and mobile devices
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js (v14 or higher)
+- npm or yarn
+- Java Backend API running on `http://localhost:8080`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Navigate to the frontend directory:
+   ```bash
+   cd daiken-frontend
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### `npm run build`
+## Running the Application
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Start the development server:
+   ```bash
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Open your browser and navigate to `http://localhost:3000`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Make sure your Java backend is running on `http://localhost:8080`
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+src/
+├── components/
+│   ├── Building.js          # Main building component
+│   ├── Building.css         # Building component styles
+│   ├── RoomCard.js          # Individual room card component
+│   ├── RoomCard.css         # Room card styles
+│   ├── AddRoomModal.js      # Modal for adding new rooms
+│   └── AddRoomModal.css     # Modal styles
+├── services/
+│   └── api.js               # API service layer for backend communication
+├── App.js                   # Main application component
+├── App.css                  # Application styles
+├── index.js                 # Application entry point
+└── index.css                # Global styles
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## API Integration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The frontend communicates with the Java backend through REST API endpoints:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `GET /api/building` - Get building details
+- `PUT /api/building/temperature/{temperature}` - Update building target temperature
+- `GET /api/building/rooms` - Get all rooms
+- `POST /api/building/apartments` - Add new apartment
+- `POST /api/building/common-rooms` - Add new common room
+- `PUT /api/building/rooms/{id}` - Update room details
+- `DELETE /api/building/rooms/{id}` - Delete room
 
-## Learn More
+## Components Overview
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Building Component
+- Main container component that manages the overall application state
+- Displays building statistics and controls
+- Handles real-time updates via polling
+- Manages room operations (add, edit, delete)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### RoomCard Component
+- Displays individual room information
+- Shows current temperature and heating/cooling status
+- Provides inline editing capabilities
+- Supports both Apartment and Common Room types
 
-### Code Splitting
+### AddRoomModal Component
+- Modal dialog for adding new rooms
+- Form validation and preview functionality
+- Supports adding both apartments (with owner name) and common rooms (with type)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Styling
 
-### Analyzing the Bundle Size
+The application uses modern CSS with:
+- CSS Grid and Flexbox for responsive layouts
+- CSS custom properties for consistent theming
+- Smooth animations and transitions
+- Mobile-first responsive design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Real-time Features
 
-### Making a Progressive Web App
+- Automatic data refresh every 5 seconds
+- Visual indicators for heating/cooling status
+- Live temperature updates
+- Immediate UI feedback for user actions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Error Handling
 
-### Advanced Configuration
+- Network error handling with user-friendly messages
+- Form validation for user inputs
+- Graceful degradation when backend is unavailable
+- Retry mechanisms for failed operations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Browser Support
 
-### Deployment
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Development
 
-### `npm run build` fails to minify
+### Available Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `npm start` - Start development server
+- `npm build` - Build for production
+- `npm test` - Run tests
+- `npm eject` - Eject from Create React App
+
+### Code Style
+
+The project follows standard React and JavaScript conventions:
+- Functional components with hooks
+- Consistent naming conventions
+- Modular CSS organization
+- Proper error boundaries and loading states
+
+## Assumptions Made
+
+1. **Backend API Structure**: Assumed the backend follows RESTful conventions with the endpoints listed above
+2. **Room Types**: Assumed Common Rooms are limited to 'GYM', 'LIBRARY', and 'LAUNDRY' as specified
+3. **Temperature Range**: Assumed valid temperature range is 10-40°C for safety
+4. **Real-time Updates**: Implemented polling instead of WebSockets for simplicity
+5. **Authentication**: No authentication implemented as not specified in requirements
+6. **Data Persistence**: Assumed backend handles all data persistence
+
+## Future Enhancements
+
+- WebSocket integration for real-time updates
+- User authentication and authorization
+- Advanced temperature scheduling
+- Historical temperature data visualization
+- Mobile app version
+- Offline mode support
